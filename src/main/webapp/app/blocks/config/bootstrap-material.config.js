@@ -8,7 +8,7 @@
     compileServiceConfig.$inject = [];
 
     function bootstrapMaterialDesignConfig() {
-        $.material.init();
+        // $.material.init();
 
     }
 })();

@@ -25,6 +25,12 @@ public class ElasticsearchIndexService {
     private final Logger log = LoggerFactory.getLogger(ElasticsearchIndexService.class);
 
     @Inject
+    private HemocentroRepository hemocentroRepository;
+
+    @Inject
+    private HemocentroSearchRepository hemocentroSearchRepository;
+
+    @Inject
     private UserRepository userRepository;
 
     @Inject
@@ -36,6 +42,7 @@ public class ElasticsearchIndexService {
     @Async
     @Timed
     public void reindexAll() {
+        reindexForClass(Hemocentro.class, hemocentroRepository, hemocentroSearchRepository);
         reindexForClass(User.class, userRepository, userSearchRepository);
 
         log.info("Elasticsearch: Successfully performed reindexing");

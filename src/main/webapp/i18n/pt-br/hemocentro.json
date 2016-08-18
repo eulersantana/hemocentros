@@ -1,0 +1,26 @@
+{
+    "timeLocationApp": {
+        "hemocentro" : {
+            "home": {
+                "title": "Hemocentros",
+                "createLabel": "Criar novo Hemocentro",
+                "createOrEditLabel": "Criar ou editar Hemocentro",
+                "search": "Pesquisar por Hemocentro"
+            },
+            "created": "Um novo Hemocentro é criado com o identificador {{ param }}",
+            "updated": "Um Hemocentro é atualizado com o identificador {{ param }}",
+            "deleted": "Um Hemocentro é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Hemocentro {{ id }}?"
+            },
+            "detail": {
+                "title": "Hemocentro"
+            },
+            "nome": "Nome",
+            "email": "Email",
+            "movel": "Movel",
+            "status": "Status",
+            "createdAt": "Created At"
+        }
+    }
+}
