@@ -22,7 +22,7 @@
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <!-- <page-ribbon></page-ribbon> -->
+    <page-ribbon></page-ribbon>
     <div ui-view="navbar" ng-cloak></div>
     <div class="container">
         <div class="well" ui-view="content">
@@ -52,12 +52,6 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/sockjs-client/dist/sockjs.js"></script>
     <script src="bower_components/stomp-websocket/lib/stomp.min.js"></script>
-    <script src="bower_components/markerclustererplus/src/markerclusterer.js"></script>
-    <script src="bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js"></script>
-    <script src="bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js"></script>
-    <script src="bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js"></script>
-    <script src="bower_components/js-rich-marker/src/richmarker.js"></script>
-    <script src="bower_components/arrive/src/arrive.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -76,8 +70,6 @@
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
-    <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
-    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -105,6 +97,34 @@
     <script src="app/layouts/error/error.state.js"></script>
     <script src="app/home/home.state.js"></script>
     <script src="app/home/home.controller.js"></script>
+    <script src="app/entities/telefone/telefone-dialog.controller.js"></script>
+    <script src="app/entities/telefone/telefone-detail.controller.js"></script>
+    <script src="app/entities/telefone/telefone-delete-dialog.controller.js"></script>
+    <script src="app/entities/telefone/telefone.state.js"></script>
+    <script src="app/entities/telefone/telefone.service.js"></script>
+    <script src="app/entities/telefone/telefone.search.service.js"></script>
+    <script src="app/entities/telefone/telefone.controller.js"></script>
+    <script src="app/entities/local/local-dialog.controller.js"></script>
+    <script src="app/entities/local/local-detail.controller.js"></script>
+    <script src="app/entities/local/local-delete-dialog.controller.js"></script>
+    <script src="app/entities/local/local.state.js"></script>
+    <script src="app/entities/local/local.service.js"></script>
+    <script src="app/entities/local/local.search.service.js"></script>
+    <script src="app/entities/local/local.controller.js"></script>
+    <script src="app/entities/hemocentro/hemocentro-dialog.controller.js"></script>
+    <script src="app/entities/hemocentro/hemocentro-detail.controller.js"></script>
+    <script src="app/entities/hemocentro/hemocentro-delete-dialog.controller.js"></script>
+    <script src="app/entities/hemocentro/hemocentro.state.js"></script>
+    <script src="app/entities/hemocentro/hemocentro.service.js"></script>
+    <script src="app/entities/hemocentro/hemocentro.search.service.js"></script>
+    <script src="app/entities/hemocentro/hemocentro.controller.js"></script>
+    <script src="app/entities/funcionamento/funcionamento-dialog.controller.js"></script>
+    <script src="app/entities/funcionamento/funcionamento-detail.controller.js"></script>
+    <script src="app/entities/funcionamento/funcionamento-delete-dialog.controller.js"></script>
+    <script src="app/entities/funcionamento/funcionamento.state.js"></script>
+    <script src="app/entities/funcionamento/funcionamento.service.js"></script>
+    <script src="app/entities/funcionamento/funcionamento.search.service.js"></script>
+    <script src="app/entities/funcionamento/funcionamento.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
@@ -142,6 +162,7 @@
     <script src="app/blocks/config/localstorage.config.js"></script>
     <script src="app/blocks/config/http.config.js"></script>
     <script src="app/blocks/config/compile.config.js"></script>
+    <script src="app/blocks/config/bootstrap-material.config.js"></script>
     <script src="app/blocks/config/alert.config.js"></script>
     <script src="app/app.state.js"></script>
     <script src="app/app.constants.js"></script>

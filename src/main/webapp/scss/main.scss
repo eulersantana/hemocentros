@@ -10,10 +10,7 @@ Hide ng-cloak on page load, https://docs.angularjs.org/api/ng/directive/ngCloak
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
-/* ==========================================================================
-Google Maps
-========================================================================== */
-.angular-google-map-container { height: 400px; }
+
 /* ==========================================================================
 Developement Ribbon
 ========================================================================== */
@@ -103,7 +100,7 @@ Main page styles
     display: inline-block;
     width: 347px;
     height: 497px;
-    background: url("../images/icons/logo.svg") no-repeat center top;
+    background: url("../images/hipster.png") no-repeat center top;
     background-size: contain;
 }
 
@@ -385,13 +382,6 @@ Social button
     background-color: #2795e9;
     border-color: rgba(0, 0, 0, 0.2);
     color: #fff;
-}
-
-/* ==========================================================================
-Fix error field display
-========================================================================== */
-.form-group .help-block {
-    position: static;
 }
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */

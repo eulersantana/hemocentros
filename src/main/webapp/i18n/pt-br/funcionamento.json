@@ -1,0 +1,24 @@
+{
+    "timeLocationApp": {
+        "funcionamento" : {
+            "home": {
+                "title": "Funcionamentos",
+                "createLabel": "Criar novo Funcionamento",
+                "createOrEditLabel": "Criar ou editar Funcionamento",
+                "search": "Pesquisar por Funcionamento"
+            },
+            "created": "Um novo Funcionamento é criado com o identificador {{ param }}",
+            "updated": "Um Funcionamento é atualizado com o identificador {{ param }}",
+            "deleted": "Um Funcionamento é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Funcionamento {{ id }}?"
+            },
+            "detail": {
+                "title": "Funcionamento"
+            },
+            "data_inicio": "Data Inicio",
+            "data_fim": "Data Fim",
+            "createdAt": "Created At"
+        }
+    }
+}

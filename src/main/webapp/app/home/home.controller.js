@@ -14,7 +14,6 @@
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
         vm.register = register;
-        $scope.map = { center: { latitude: -12.935956, longitude:  -38.362397 }, zoom: 10 };
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
@@ -30,7 +29,5 @@
         function register () {
             $state.go('register');
         }
-
-
     }
 })();

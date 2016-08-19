@@ -1,0 +1,24 @@
+{
+    "timeLocationApp": {
+        "local" : {
+            "home": {
+                "title": "Locals",
+                "createLabel": "Criar novo Local",
+                "createOrEditLabel": "Criar ou editar Local",
+                "search": "Pesquisar por Local"
+            },
+            "created": "Um novo Local é criado com o identificador {{ param }}",
+            "updated": "Um Local é atualizado com o identificador {{ param }}",
+            "deleted": "Um Local é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Local {{ id }}?"
+            },
+            "detail": {
+                "title": "Local"
+            },
+            "pais": "Pais",
+            "cidade": "Cidade",
+            "estado": "Estado"
+        }
+    }
+}

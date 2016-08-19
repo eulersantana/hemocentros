@@ -3,9 +3,9 @@
 
     angular
         .module('timeLocationApp', [
-            'ngStorage',
+            'ngStorage', 
             'tmh.dynamicLocale',
-            'pascalprecht.translate',
+            'pascalprecht.translate', 
             'ngResource',
             'ngCookies',
             'ngAria',
@@ -16,24 +16,14 @@
             'ui.router',
             'infinite-scroll',
             // jhipster-needle-angularjs-add-module JHipster will add new module here
-            'angular-loading-bar',
-            'uiGmapgoogle-maps'
+            'angular-loading-bar'
         ])
-        .config(config)
         .run(run);
 
     run.$inject = ['stateHandler', 'translationHandler'];
-    config.$inject = ['uiGmapGoogleMapApiProvider'];
-
 
     function run(stateHandler, translationHandler) {
         stateHandler.initialize();
         translationHandler.initialize();
-    }
-
-    function config(GoogleMapApiProviders) {
-      GoogleMapApiProviders.configure({
-           china: true
-       });
     }
 })();

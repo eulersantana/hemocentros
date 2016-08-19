@@ -1,0 +1,27 @@
+{
+    "timeLocationApp": {
+        "hemocentro" : {
+            "home": {
+                "title": "Hemocentros",
+                "createLabel": "Create a new Hemocentro",
+                "createOrEditLabel": "Create or edit a Hemocentro",
+                "search": "Search for Hemocentro"
+            },
+            "created": "A new Hemocentro is created with identifier {{ param }}",
+            "updated": "A Hemocentro is updated with identifier {{ param }}",
+            "deleted": "A Hemocentro is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Hemocentro {{ id }}?"
+            },
+            "detail": {
+                "title": "Hemocentro"
+            },
+            "nome": "Nome",
+            "email": "Email",
+            "movel": "Movel",
+            "status": "Status",
+            "createdAt": "Created At",
+            "telefone": "Telefone"
+        }
+    }
+}
