@@ -1,5 +1,12 @@
 {
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "telefone",
+            "otherEntityName": "telefone",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "hemocentro"
+        }
+    ],
     "fields": [
         {
             "fieldName": "nome",

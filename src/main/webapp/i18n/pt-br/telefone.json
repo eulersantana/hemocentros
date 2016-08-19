@@ -1,0 +1,26 @@
+{
+    "timeLocationApp": {
+        "telefone" : {
+            "home": {
+                "title": "Telefones",
+                "createLabel": "Criar novo Telefone",
+                "createOrEditLabel": "Criar ou editar Telefone",
+                "search": "Pesquisar por Telefone"
+            },
+            "created": "Um novo Telefone é criado com o identificador {{ param }}",
+            "updated": "Um Telefone é atualizado com o identificador {{ param }}",
+            "deleted": "Um Telefone é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Telefone {{ id }}?"
+            },
+            "detail": {
+                "title": "Telefone"
+            },
+            "numero": "Numero",
+            "ddd": "Ddd",
+            "ddi": "Ddi",
+            "fixo": "Fixo",
+            "hemocentro": "Hemocentro"
+        }
+    }
+}

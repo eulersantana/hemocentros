@@ -5,9 +5,9 @@
         .module('timeLocationApp')
         .controller('HemocentroDialogController', HemocentroDialogController);
 
-    HemocentroDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Hemocentro'];
+    HemocentroDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Hemocentro', 'Telefone'];
 
-    function HemocentroDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Hemocentro) {
+    function HemocentroDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Hemocentro, Telefone) {
         var vm = this;
 
         vm.hemocentro = entity;
@@ -15,6 +15,7 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
+        vm.telefones = Telefone.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

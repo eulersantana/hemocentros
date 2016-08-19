@@ -25,10 +25,28 @@ public class ElasticsearchIndexService {
     private final Logger log = LoggerFactory.getLogger(ElasticsearchIndexService.class);
 
     @Inject
+    private FuncionamentoRepository funcionamentoRepository;
+
+    @Inject
+    private FuncionamentoSearchRepository funcionamentoSearchRepository;
+
+    @Inject
     private HemocentroRepository hemocentroRepository;
 
     @Inject
     private HemocentroSearchRepository hemocentroSearchRepository;
+
+    @Inject
+    private LocalRepository localRepository;
+
+    @Inject
+    private LocalSearchRepository localSearchRepository;
+
+    @Inject
+    private TelefoneRepository telefoneRepository;
+
+    @Inject
+    private TelefoneSearchRepository telefoneSearchRepository;
 
     @Inject
     private UserRepository userRepository;
@@ -42,7 +60,10 @@ public class ElasticsearchIndexService {
     @Async
     @Timed
     public void reindexAll() {
+        reindexForClass(Funcionamento.class, funcionamentoRepository, funcionamentoSearchRepository);
         reindexForClass(Hemocentro.class, hemocentroRepository, hemocentroSearchRepository);
+        reindexForClass(Local.class, localRepository, localSearchRepository);
+        reindexForClass(Telefone.class, telefoneRepository, telefoneSearchRepository);
         reindexForClass(User.class, userRepository, userSearchRepository);
 
         log.info("Elasticsearch: Successfully performed reindexing");

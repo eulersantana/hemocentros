@@ -1,0 +1,48 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "hemocentro",
+            "otherEntityName": "hemocentro",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "numero",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "pattern"
+            ],
+            "fieldValidateRulesPattern": "(^[0-9]*$)",
+            "fieldValidateRulesPatternJava": "(^[0-9]*$)"
+        },
+        {
+            "fieldName": "ddd",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ddi",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fixo",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160819125232",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "telefone",
+    "pagination": "no"
+}

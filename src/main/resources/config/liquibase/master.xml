@@ -6,6 +6,10 @@
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160817142439_added_entity_Hemocentro.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160819125232_added_entity_Telefone.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160819170909_added_entity_Funcionamento.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160819173227_added_entity_Local.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="classpath:config/liquibase/changelog/20160819125232_added_entity_constraints_Telefone.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

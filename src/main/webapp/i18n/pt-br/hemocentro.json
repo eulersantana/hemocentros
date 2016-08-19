@@ -20,7 +20,8 @@
             "email": "Email",
             "movel": "Movel",
             "status": "Status",
-            "createdAt": "Created At"
+            "createdAt": "Created At",
+            "telefone": "Telefone"
         }
     }
 }

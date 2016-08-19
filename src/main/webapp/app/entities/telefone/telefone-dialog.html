@@ -1,0 +1,92 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myTelefoneLabel" translate="timeLocationApp.telefone.home.createOrEditLabel">Create or edit a Telefone</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.telefone.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.telefone.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.telefone.numero" for="field_numero">Numero</label>
+            <input type="text" class="form-control" name="numero" id="field_numero"
+                    ng-model="vm.telefone.numero"
+                    required ng-pattern="/(^[0-9]*$)/" />
+            <div ng-show="editForm.numero.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.numero.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.numero.$error.pattern" translate="entity.validation.pattern" translate-value-pattern="(^[0-9]*$)">
+                    This field should follow pattern "(^[0-9]*$)".
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.telefone.ddd" for="field_ddd">Ddd</label>
+            <input type="number" class="form-control" name="ddd" id="field_ddd"
+                    ng-model="vm.telefone.ddd"
+                    required />
+            <div ng-show="editForm.ddd.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.ddd.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.ddd.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.telefone.ddi" for="field_ddi">Ddi</label>
+            <input type="number" class="form-control" name="ddi" id="field_ddi"
+                    ng-model="vm.telefone.ddi"
+                    required />
+            <div ng-show="editForm.ddi.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.ddi.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.ddi.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.telefone.fixo" for="field_fixo">Fixo</label>
+            <input type="checkbox" class="form-control" name="fixo" id="field_fixo"
+                    ng-model="vm.telefone.fixo"
+                     />
+            <div ng-show="editForm.fixo.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.fixo.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="timeLocationApp.telefone.hemocentro" for="field_hemocentro">Hemocentro</label>
+            <select class="form-control" id="field_hemocentro" name="hemocentro" ng-model="vm.telefone.hemocentro" ng-options="hemocentro as hemocentro.id for hemocentro in vm.hemocentros track by hemocentro.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

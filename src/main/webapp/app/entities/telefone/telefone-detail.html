@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span translate="timeLocationApp.telefone.detail.title">Telefone</span> {{vm.telefone.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="timeLocationApp.telefone.numero">Numero</span></dt>
+        <dd>
+            <span>{{vm.telefone.numero}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.telefone.ddd">Ddd</span></dt>
+        <dd>
+            <span>{{vm.telefone.ddd}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.telefone.ddi">Ddi</span></dt>
+        <dd>
+            <span>{{vm.telefone.ddi}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.telefone.fixo">Fixo</span></dt>
+        <dd>
+            <span>{{vm.telefone.fixo}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.telefone.hemocentro">Hemocentro</span></dt>
+        <dd>
+            <a ui-sref="hemocentro-detail({id:vm.telefone.hemocentro.id})">{{vm.telefone.hemocentro.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="telefone-detail.edit({id:vm.telefone.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,5 +1,6 @@
 package com.eulersantana.timelocation.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -8,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -45,6 +48,11 @@ public class Hemocentro implements Serializable {
     @NotNull
     @Column(name = "created_at", nullable = false)
     private LocalDate createdAt;
+
+    @OneToMany(mappedBy = "hemocentro")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Telefone> telefones = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -92,6 +100,14 @@ public class Hemocentro implements Serializable {
 
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Set<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(Set<Telefone> telefones) {
+        this.telefones = telefones;
     }
 
     @Override

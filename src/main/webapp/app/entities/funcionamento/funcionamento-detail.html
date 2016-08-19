@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span translate="timeLocationApp.funcionamento.detail.title">Funcionamento</span> {{vm.funcionamento.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="timeLocationApp.funcionamento.data_inicio">Data Inicio</span></dt>
+        <dd>
+            <span>{{vm.funcionamento.data_inicio | date:'medium'}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.funcionamento.data_fim">Data Fim</span></dt>
+        <dd>
+            <span>{{vm.funcionamento.data_fim | date:'medium'}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.funcionamento.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{vm.funcionamento.createdAt | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="funcionamento-detail.edit({id:vm.funcionamento.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
