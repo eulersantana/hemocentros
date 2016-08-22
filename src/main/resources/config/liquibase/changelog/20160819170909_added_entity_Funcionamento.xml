@@ -21,23 +21,26 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="data_inicio" type="timestamp">
+            <column name="dia" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             
-            <column name="data_fim" type="timestamp">
+            <column name="hora_inicio" type="timestamp">
                 <constraints nullable="false" />
             </column>
             
-            <column name="created_at" type="timestamp">
-                <constraints nullable="true" />
+            <column name="hora_fim" type="timestamp">
+                <constraints nullable="false" />
             </column>
             
+            <column name="hemocentro_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="funcionamento" columnName="data_inicio" columnDataType="datetime"/>
-        <dropDefaultValue tableName="funcionamento" columnName="data_fim" columnDataType="datetime"/>
-        <dropDefaultValue tableName="funcionamento" columnName="created_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="funcionamento" columnName="hora_inicio" columnDataType="datetime"/>
+        <dropDefaultValue tableName="funcionamento" columnName="hora_fim" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

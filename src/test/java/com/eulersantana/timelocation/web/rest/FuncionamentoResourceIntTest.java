@@ -49,18 +49,16 @@ public class FuncionamentoResourceIntTest {
 
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").withZone(ZoneId.of("Z"));
 
+    private static final String DEFAULT_DIA = "AAAAA";
+    private static final String UPDATED_DIA = "BBBBB";
 
-    private static final ZonedDateTime DEFAULT_DATA_INICIO = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
-    private static final ZonedDateTime UPDATED_DATA_INICIO = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
-    private static final String DEFAULT_DATA_INICIO_STR = dateTimeFormatter.format(DEFAULT_DATA_INICIO);
+    private static final ZonedDateTime DEFAULT_HORA_INICIO = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_HORA_INICIO = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_HORA_INICIO_STR = dateTimeFormatter.format(DEFAULT_HORA_INICIO);
 
-    private static final ZonedDateTime DEFAULT_DATA_FIM = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
-    private static final ZonedDateTime UPDATED_DATA_FIM = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
-    private static final String DEFAULT_DATA_FIM_STR = dateTimeFormatter.format(DEFAULT_DATA_FIM);
-
-    private static final ZonedDateTime DEFAULT_CREATED_AT = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
-    private static final ZonedDateTime UPDATED_CREATED_AT = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
-    private static final String DEFAULT_CREATED_AT_STR = dateTimeFormatter.format(DEFAULT_CREATED_AT);
+    private static final ZonedDateTime DEFAULT_HORA_FIM = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_HORA_FIM = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_HORA_FIM_STR = dateTimeFormatter.format(DEFAULT_HORA_FIM);
 
     @Inject
     private FuncionamentoRepository funcionamentoRepository;
@@ -95,9 +93,9 @@ public class FuncionamentoResourceIntTest {
     public void initTest() {
         funcionamentoSearchRepository.deleteAll();
         funcionamento = new Funcionamento();
-        funcionamento.setData_inicio(DEFAULT_DATA_INICIO);
-        funcionamento.setData_fim(DEFAULT_DATA_FIM);
-        funcionamento.setCreatedAt(DEFAULT_CREATED_AT);
+        funcionamento.setDia(DEFAULT_DIA);
+        funcionamento.setHora_inicio(DEFAULT_HORA_INICIO);
+        funcionamento.setHora_fim(DEFAULT_HORA_FIM);
     }
 
     @Test
@@ -116,9 +114,9 @@ public class FuncionamentoResourceIntTest {
         List<Funcionamento> funcionamentos = funcionamentoRepository.findAll();
         assertThat(funcionamentos).hasSize(databaseSizeBeforeCreate + 1);
         Funcionamento testFuncionamento = funcionamentos.get(funcionamentos.size() - 1);
-        assertThat(testFuncionamento.getData_inicio()).isEqualTo(DEFAULT_DATA_INICIO);
-        assertThat(testFuncionamento.getData_fim()).isEqualTo(DEFAULT_DATA_FIM);
-        assertThat(testFuncionamento.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testFuncionamento.getDia()).isEqualTo(DEFAULT_DIA);
+        assertThat(testFuncionamento.getHora_inicio()).isEqualTo(DEFAULT_HORA_INICIO);
+        assertThat(testFuncionamento.getHora_fim()).isEqualTo(DEFAULT_HORA_FIM);
 
         // Validate the Funcionamento in ElasticSearch
         Funcionamento funcionamentoEs = funcionamentoSearchRepository.findOne(testFuncionamento.getId());
@@ -127,10 +125,10 @@ public class FuncionamentoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkData_inicioIsRequired() throws Exception {
+    public void checkDiaIsRequired() throws Exception {
         int databaseSizeBeforeTest = funcionamentoRepository.findAll().size();
         // set the field null
-        funcionamento.setData_inicio(null);
+        funcionamento.setDia(null);
 
         // Create the Funcionamento, which fails.
 
@@ -145,10 +143,28 @@ public class FuncionamentoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkData_fimIsRequired() throws Exception {
+    public void checkHora_inicioIsRequired() throws Exception {
         int databaseSizeBeforeTest = funcionamentoRepository.findAll().size();
         // set the field null
-        funcionamento.setData_fim(null);
+        funcionamento.setHora_inicio(null);
+
+        // Create the Funcionamento, which fails.
+
+        restFuncionamentoMockMvc.perform(post("/api/funcionamentos")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(funcionamento)))
+                .andExpect(status().isBadRequest());
+
+        List<Funcionamento> funcionamentos = funcionamentoRepository.findAll();
+        assertThat(funcionamentos).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkHora_fimIsRequired() throws Exception {
+        int databaseSizeBeforeTest = funcionamentoRepository.findAll().size();
+        // set the field null
+        funcionamento.setHora_fim(null);
 
         // Create the Funcionamento, which fails.
 
@@ -172,9 +188,9 @@ public class FuncionamentoResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(funcionamento.getId().intValue())))
-                .andExpect(jsonPath("$.[*].data_inicio").value(hasItem(DEFAULT_DATA_INICIO_STR)))
-                .andExpect(jsonPath("$.[*].data_fim").value(hasItem(DEFAULT_DATA_FIM_STR)))
-                .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT_STR)));
+                .andExpect(jsonPath("$.[*].dia").value(hasItem(DEFAULT_DIA.toString())))
+                .andExpect(jsonPath("$.[*].hora_inicio").value(hasItem(DEFAULT_HORA_INICIO_STR)))
+                .andExpect(jsonPath("$.[*].hora_fim").value(hasItem(DEFAULT_HORA_FIM_STR)));
     }
 
     @Test
@@ -188,9 +204,9 @@ public class FuncionamentoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(funcionamento.getId().intValue()))
-            .andExpect(jsonPath("$.data_inicio").value(DEFAULT_DATA_INICIO_STR))
-            .andExpect(jsonPath("$.data_fim").value(DEFAULT_DATA_FIM_STR))
-            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT_STR));
+            .andExpect(jsonPath("$.dia").value(DEFAULT_DIA.toString()))
+            .andExpect(jsonPath("$.hora_inicio").value(DEFAULT_HORA_INICIO_STR))
+            .andExpect(jsonPath("$.hora_fim").value(DEFAULT_HORA_FIM_STR));
     }
 
     @Test
@@ -212,9 +228,9 @@ public class FuncionamentoResourceIntTest {
         // Update the funcionamento
         Funcionamento updatedFuncionamento = new Funcionamento();
         updatedFuncionamento.setId(funcionamento.getId());
-        updatedFuncionamento.setData_inicio(UPDATED_DATA_INICIO);
-        updatedFuncionamento.setData_fim(UPDATED_DATA_FIM);
-        updatedFuncionamento.setCreatedAt(UPDATED_CREATED_AT);
+        updatedFuncionamento.setDia(UPDATED_DIA);
+        updatedFuncionamento.setHora_inicio(UPDATED_HORA_INICIO);
+        updatedFuncionamento.setHora_fim(UPDATED_HORA_FIM);
 
         restFuncionamentoMockMvc.perform(put("/api/funcionamentos")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -225,9 +241,9 @@ public class FuncionamentoResourceIntTest {
         List<Funcionamento> funcionamentos = funcionamentoRepository.findAll();
         assertThat(funcionamentos).hasSize(databaseSizeBeforeUpdate);
         Funcionamento testFuncionamento = funcionamentos.get(funcionamentos.size() - 1);
-        assertThat(testFuncionamento.getData_inicio()).isEqualTo(UPDATED_DATA_INICIO);
-        assertThat(testFuncionamento.getData_fim()).isEqualTo(UPDATED_DATA_FIM);
-        assertThat(testFuncionamento.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testFuncionamento.getDia()).isEqualTo(UPDATED_DIA);
+        assertThat(testFuncionamento.getHora_inicio()).isEqualTo(UPDATED_HORA_INICIO);
+        assertThat(testFuncionamento.getHora_fim()).isEqualTo(UPDATED_HORA_FIM);
 
         // Validate the Funcionamento in ElasticSearch
         Funcionamento funcionamentoEs = funcionamentoSearchRepository.findOne(testFuncionamento.getId());
@@ -267,8 +283,8 @@ public class FuncionamentoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.[*].id").value(hasItem(funcionamento.getId().intValue())))
-            .andExpect(jsonPath("$.[*].data_inicio").value(hasItem(DEFAULT_DATA_INICIO_STR)))
-            .andExpect(jsonPath("$.[*].data_fim").value(hasItem(DEFAULT_DATA_FIM_STR)))
-            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT_STR)));
+            .andExpect(jsonPath("$.[*].dia").value(hasItem(DEFAULT_DIA.toString())))
+            .andExpect(jsonPath("$.[*].hora_inicio").value(hasItem(DEFAULT_HORA_INICIO_STR)))
+            .andExpect(jsonPath("$.[*].hora_fim").value(hasItem(DEFAULT_HORA_FIM_STR)));
     }
 }

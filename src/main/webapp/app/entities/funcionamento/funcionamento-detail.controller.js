@@ -5,9 +5,9 @@
         .module('timeLocationApp')
         .controller('FuncionamentoDetailController', FuncionamentoDetailController);
 
-    FuncionamentoDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Funcionamento'];
+    FuncionamentoDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Funcionamento', 'Hemocentro'];
 
-    function FuncionamentoDetailController($scope, $rootScope, $stateParams, previousState, entity, Funcionamento) {
+    function FuncionamentoDetailController($scope, $rootScope, $stateParams, previousState, entity, Funcionamento, Hemocentro) {
         var vm = this;
 
         vm.funcionamento = entity;

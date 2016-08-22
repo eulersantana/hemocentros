@@ -67,7 +67,7 @@ class FuncionamentoGatlingTest extends Simulation {
             .exec(http("Create new funcionamento")
             .post("/api/funcionamentos")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "data_inicio":"2020-01-01T00:00:00.000Z", "data_fim":"2020-01-01T00:00:00.000Z", "createdAt":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "dia":"SAMPLE_TEXT", "hora_inicio":"2020-01-01T00:00:00.000Z", "hora_fim":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_funcionamento_url"))).exitHereIfFailed
             .pause(10)

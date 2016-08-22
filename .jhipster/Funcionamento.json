@@ -1,23 +1,36 @@
 {
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "hemocentro",
+            "otherEntityName": "hemocentro",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
-            "fieldName": "data_inicio",
+            "fieldName": "dia",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "hora_inicio",
             "fieldType": "ZonedDateTime",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "data_fim",
+            "fieldName": "hora_fim",
             "fieldType": "ZonedDateTime",
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "createdAt",
-            "fieldType": "ZonedDateTime"
         }
     ],
     "changelogDate": "20160819170909",

@@ -52,7 +52,7 @@ public class Hemocentro implements Serializable {
     @OneToMany(mappedBy = "hemocentro")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Telefone> telefones = new HashSet<>();
+    private Set<Funcionamento> funcionamentos = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -102,12 +102,12 @@ public class Hemocentro implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public Set<Telefone> getTelefones() {
-        return telefones;
+    public Set<Funcionamento> getFuncionamentos() {
+        return funcionamentos;
     }
 
-    public void setTelefones(Set<Telefone> telefones) {
-        this.telefones = telefones;
+    public void setFuncionamentos(Set<Funcionamento> funcionamentos) {
+        this.funcionamentos = funcionamentos;
     }
 
     @Override

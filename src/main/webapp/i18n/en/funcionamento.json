@@ -16,9 +16,10 @@
             "detail": {
                 "title": "Funcionamento"
             },
-            "data_inicio": "Data Inicio",
-            "data_fim": "Data Fim",
-            "createdAt": "Created At"
+            "dia": "Dia",
+            "hora_inicio": "Hora Inicio",
+            "hora_fim": "Hora Fim",
+            "hemocentro": "Hemocentro"
         }
     }
 }

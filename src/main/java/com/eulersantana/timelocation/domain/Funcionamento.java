@@ -26,15 +26,20 @@ public class Funcionamento implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "data_inicio", nullable = false)
-    private ZonedDateTime data_inicio;
+    @Column(name = "dia", nullable = false)
+    private String dia;
 
     @NotNull
-    @Column(name = "data_fim", nullable = false)
-    private ZonedDateTime data_fim;
+    @Column(name = "hora_inicio", nullable = false)
+    private ZonedDateTime hora_inicio;
 
-    @Column(name = "created_at")
-    private ZonedDateTime createdAt;
+    @NotNull
+    @Column(name = "hora_fim", nullable = false)
+    private ZonedDateTime hora_fim;
+
+    @ManyToOne
+    @NotNull
+    private Hemocentro hemocentro;
 
     public Long getId() {
         return id;
@@ -44,28 +49,36 @@ public class Funcionamento implements Serializable {
         this.id = id;
     }
 
-    public ZonedDateTime getData_inicio() {
-        return data_inicio;
+    public String getDia() {
+        return dia;
     }
 
-    public void setData_inicio(ZonedDateTime data_inicio) {
-        this.data_inicio = data_inicio;
+    public void setDia(String dia) {
+        this.dia = dia;
     }
 
-    public ZonedDateTime getData_fim() {
-        return data_fim;
+    public ZonedDateTime getHora_inicio() {
+        return hora_inicio;
     }
 
-    public void setData_fim(ZonedDateTime data_fim) {
-        this.data_fim = data_fim;
+    public void setHora_inicio(ZonedDateTime hora_inicio) {
+        this.hora_inicio = hora_inicio;
     }
 
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
+    public ZonedDateTime getHora_fim() {
+        return hora_fim;
     }
 
-    public void setCreatedAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setHora_fim(ZonedDateTime hora_fim) {
+        this.hora_fim = hora_fim;
+    }
+
+    public Hemocentro getHemocentro() {
+        return hemocentro;
+    }
+
+    public void setHemocentro(Hemocentro hemocentro) {
+        this.hemocentro = hemocentro;
     }
 
     @Override
@@ -92,9 +105,9 @@ public class Funcionamento implements Serializable {
     public String toString() {
         return "Funcionamento{" +
             "id=" + id +
-            ", data_inicio='" + data_inicio + "'" +
-            ", data_fim='" + data_fim + "'" +
-            ", createdAt='" + createdAt + "'" +
+            ", dia='" + dia + "'" +
+            ", hora_inicio='" + hora_inicio + "'" +
+            ", hora_fim='" + hora_fim + "'" +
             '}';
     }
 }

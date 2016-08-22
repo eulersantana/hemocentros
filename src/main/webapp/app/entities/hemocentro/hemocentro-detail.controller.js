@@ -5,9 +5,9 @@
         .module('timeLocationApp')
         .controller('HemocentroDetailController', HemocentroDetailController);
 
-    HemocentroDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Hemocentro', 'Telefone'];
+    HemocentroDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Hemocentro', 'Funcionamento'];
 
-    function HemocentroDetailController($scope, $rootScope, $stateParams, previousState, entity, Hemocentro, Telefone) {
+    function HemocentroDetailController($scope, $rootScope, $stateParams, previousState, entity, Hemocentro, Funcionamento) {
         var vm = this;
 
         vm.hemocentro = entity;

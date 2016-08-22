@@ -42,6 +42,7 @@ public class Telefone implements Serializable {
     private Boolean fixo;
 
     @ManyToOne
+    @NotNull
     private Hemocentro hemocentro;
 
     public Long getId() {

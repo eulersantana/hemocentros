@@ -14,56 +14,70 @@
                     ng-model="vm.funcionamento.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="timeLocationApp.funcionamento.data_inicio" for="field_data_inicio">Data Inicio</label>
+            <label class="control-label" translate="timeLocationApp.funcionamento.dia" for="field_dia">Dia</label>
+            <input type="text" class="form-control" name="dia" id="field_dia"
+                    ng-model="vm.funcionamento.dia"
+                    required />
+            <div ng-show="editForm.dia.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dia.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.funcionamento.hora_inicio" for="field_hora_inicio">Hora Inicio</label>
                 <div class="input-group">
-                    <input id="field_data_inicio" type="text" class="form-control" name="data_inicio" datetime-picker="{{dateformat}}" ng-model="vm.funcionamento.data_inicio" is-open="vm.datePickerOpenStatus.data_inicio"
+                    <input id="field_hora_inicio" type="text" class="form-control" name="hora_inicio" datetime-picker="{{dateformat}}" ng-model="vm.funcionamento.hora_inicio" is-open="vm.datePickerOpenStatus.hora_inicio"
                     required  />
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('data_inicio')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('hora_inicio')"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
                 </div>
-            <div ng-show="editForm.data_inicio.$invalid">
+            <div ng-show="editForm.hora_inicio.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.data_inicio.$error.required" translate="entity.validation.required">
+                    ng-show="editForm.hora_inicio.$error.required" translate="entity.validation.required">
                     This field is required.
                 </p>
                 <p class="help-block"
-                    ng-show="editForm.data_inicio.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    ng-show="editForm.hora_inicio.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
                     This field should be a date and time.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" translate="timeLocationApp.funcionamento.data_fim" for="field_data_fim">Data Fim</label>
+            <label class="control-label" translate="timeLocationApp.funcionamento.hora_fim" for="field_hora_fim">Hora Fim</label>
                 <div class="input-group">
-                    <input id="field_data_fim" type="text" class="form-control" name="data_fim" datetime-picker="{{dateformat}}" ng-model="vm.funcionamento.data_fim" is-open="vm.datePickerOpenStatus.data_fim"
+                    <input id="field_hora_fim" type="text" class="form-control" name="hora_fim" datetime-picker="{{dateformat}}" ng-model="vm.funcionamento.hora_fim" is-open="vm.datePickerOpenStatus.hora_fim"
                     required  />
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('data_fim')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('hora_fim')"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
                 </div>
-            <div ng-show="editForm.data_fim.$invalid">
+            <div ng-show="editForm.hora_fim.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.data_fim.$error.required" translate="entity.validation.required">
+                    ng-show="editForm.hora_fim.$error.required" translate="entity.validation.required">
                     This field is required.
                 </p>
                 <p class="help-block"
-                    ng-show="editForm.data_fim.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    ng-show="editForm.hora_fim.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
                     This field should be a date and time.
                 </p>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="timeLocationApp.funcionamento.createdAt" for="field_createdAt">Created At</label>
-                <div class="input-group">
-                    <input id="field_createdAt" type="text" class="form-control" name="createdAt" datetime-picker="{{dateformat}}" ng-model="vm.funcionamento.createdAt" is-open="vm.datePickerOpenStatus.createdAt"
-                      />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdAt')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </div>
         </div>
 
+        <div class="form-group">
+            <label translate="timeLocationApp.funcionamento.hemocentro" for="field_hemocentro">Hemocentro</label>
+            <select class="form-control" id="field_hemocentro" name="hemocentro" ng-model="vm.funcionamento.hemocentro" ng-options="hemocentro as hemocentro.id for hemocentro in vm.hemocentros track by hemocentro.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.hemocentro.$invalid">
+            <p class="help-block"
+                ng-show="editForm.hemocentro.$error.required" translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

@@ -4,6 +4,9 @@
             "relationshipName": "hemocentro",
             "otherEntityName": "hemocentro",
             "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
             "otherEntityField": "id"
         }
     ],
