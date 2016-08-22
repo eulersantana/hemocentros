@@ -11,6 +11,7 @@
                 "telefone": "Telefone",
                 "funcionamento": "Funcionamento",
                 "local": "Local",
+                "endereco": "Endereco",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

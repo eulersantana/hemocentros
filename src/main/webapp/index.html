@@ -22,7 +22,7 @@
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <page-ribbon></page-ribbon>
+    <!-- <page-ribbon></page-ribbon> -->
     <div ui-view="navbar" ng-cloak></div>
     <div class="container">
         <div class="well" ui-view="content">
@@ -70,6 +70,7 @@
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script src="bower_components/ngmap//build/scripts/ng-map.min.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -126,6 +127,13 @@
     <script src="app/entities/funcionamento/funcionamento.search.service.js"></script>
     <script src="app/entities/funcionamento/funcionamento.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
+    <script src="app/entities/endereco/endereco-dialog.controller.js"></script>
+    <script src="app/entities/endereco/endereco-detail.controller.js"></script>
+    <script src="app/entities/endereco/endereco-delete-dialog.controller.js"></script>
+    <script src="app/entities/endereco/endereco.state.js"></script>
+    <script src="app/entities/endereco/endereco.service.js"></script>
+    <script src="app/entities/endereco/endereco.search.service.js"></script>
+    <script src="app/entities/endereco/endereco.controller.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>

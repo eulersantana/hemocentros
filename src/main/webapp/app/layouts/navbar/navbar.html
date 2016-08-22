@@ -8,8 +8,8 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand logo" href="#/" ng-click="vm.collapseNavbar()">
-                <img class="logo-img" src="content/images/logo-jhipster.png"/>
-                <span translate="global.title">TimeLocation</span> <span class="navbar-version">v{{VERSION}}</span>
+                <img class="logo-img" src="content/images/icons/logo.svg"/>
+                <span >Doe-se Ai!</span> 
             </a>
         </div>
         <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
@@ -54,6 +54,12 @@
                             <a ui-sref="local" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                 <span translate="global.menu.entities.local">Local</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" >
+                            <a ui-sref="endereco" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span translate="global.menu.entities.endereco">Endereco</span>
                             </a>
                         </li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
@@ -178,7 +184,10 @@
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu ng-if="languageVm.languages.length > 1">
                         <li active-menu="{{language}}" ng-repeat="language in languageVm.languages">
-                            <a href="" ng-click="languageVm.changeLanguage(language);vm.collapseNavbar();">{{language | findLanguageFromKey}}</a>
+                            <a href="" ng-click="languageVm.changeLanguage(language);vm.collapseNavbar();">
+                              <img ng-src="content/images/flags/{{language}}.png" alt="" />
+                              {{language | findLanguageFromKey}}
+                            </a>
                         </li>
                     </ul>
                 </li>

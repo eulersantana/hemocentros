@@ -1,0 +1,93 @@
+<div>
+    <h2 translate="timeLocationApp.endereco.home.title">Enderecos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="endereco.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  translate="timeLocationApp.endereco.home.createLabel">
+                        Create new Endereco
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'timeLocationApp.endereco.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rua"><span translate="timeLocationApp.endereco.rua">Rua</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numero"><span translate="timeLocationApp.endereco.numero">Numero</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cep"><span translate="timeLocationApp.endereco.cep">Cep</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="complemento"><span translate="timeLocationApp.endereco.complemento">Complemento</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="longitude"><span translate="timeLocationApp.endereco.longitude">Longitude</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="latitude"><span translate="timeLocationApp.endereco.latitude">Latitude</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdAt"><span translate="timeLocationApp.endereco.createdAt">Created At</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="hemocentro.id"><span translate="timeLocationApp.endereco.hemocentro">Hemocentro</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="endereco in vm.enderecos track by endereco.id">
+                    <td><a ui-sref="endereco-detail({id:endereco.id})">{{endereco.id}}</a></td>
+                    <td>{{endereco.rua}}</td>
+                    <td>{{endereco.numero}}</td>
+                    <td>{{endereco.cep}}</td>
+                    <td>{{endereco.complemento}}</td>
+                    <td>{{endereco.longitude}}</td>
+                    <td>{{endereco.latitude}}</td>
+                    <td>{{endereco.createdAt | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="hemocentro-detail({id:endereco.hemocentro.id})">{{endereco.hemocentro.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="endereco-detail({id:endereco.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="endereco.edit({id:endereco.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="endereco.delete({id:endereco.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

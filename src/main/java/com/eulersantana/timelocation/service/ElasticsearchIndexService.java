@@ -25,6 +25,12 @@ public class ElasticsearchIndexService {
     private final Logger log = LoggerFactory.getLogger(ElasticsearchIndexService.class);
 
     @Inject
+    private EnderecoRepository enderecoRepository;
+
+    @Inject
+    private EnderecoSearchRepository enderecoSearchRepository;
+
+    @Inject
     private FuncionamentoRepository funcionamentoRepository;
 
     @Inject
@@ -60,6 +66,7 @@ public class ElasticsearchIndexService {
     @Async
     @Timed
     public void reindexAll() {
+        reindexForClass(Endereco.class, enderecoRepository, enderecoSearchRepository);
         reindexForClass(Funcionamento.class, funcionamentoRepository, funcionamentoSearchRepository);
         reindexForClass(Hemocentro.class, hemocentroRepository, hemocentroSearchRepository);
         reindexForClass(Local.class, localRepository, localSearchRepository);

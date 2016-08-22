@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span translate="timeLocationApp.endereco.detail.title">Endereco</span> {{vm.endereco.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="timeLocationApp.endereco.rua">Rua</span></dt>
+        <dd>
+            <span>{{vm.endereco.rua}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.endereco.numero">Numero</span></dt>
+        <dd>
+            <span>{{vm.endereco.numero}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.endereco.cep">Cep</span></dt>
+        <dd>
+            <span>{{vm.endereco.cep}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.endereco.complemento">Complemento</span></dt>
+        <dd>
+            <span>{{vm.endereco.complemento}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.endereco.longitude">Longitude</span></dt>
+        <dd>
+            <span>{{vm.endereco.longitude}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.endereco.latitude">Latitude</span></dt>
+        <dd>
+            <span>{{vm.endereco.latitude}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.endereco.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{vm.endereco.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span translate="timeLocationApp.endereco.hemocentro">Hemocentro</span></dt>
+        <dd>
+            <a ui-sref="hemocentro-detail({id:vm.endereco.hemocentro.id})">{{vm.endereco.hemocentro.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="endereco-detail.edit({id:vm.endereco.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
