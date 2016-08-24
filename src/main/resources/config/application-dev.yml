@@ -20,8 +20,8 @@ spring:
     jackson:
         serialization.indent_output: true
     datasource:
-        url: jdbc:postgresql://localhost:5432/timelocation
-        name: timelocation
+        url: jdbc:postgresql://localhost:5432/teste
+        name: teste
         username: postgres
         password: '@!Rakfly12'
     jpa:

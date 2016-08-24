@@ -1,8 +1,8 @@
 {
     "social": {
-        "btnLabel": "Logar com {{ label }}",
+        "btnLabel": "{{ label }}",
         "register": {
-            "title": "Cadastrar com {{ label }}",
+            "title": " {{ label }}",
             "errorTitle": "Cadastrar com uma conta externa",
             "messages": {
                 "success": "<strong>Cadastro realizado com sucesso!</strong> Por favor, verifique seu e-mail para confirmar.",

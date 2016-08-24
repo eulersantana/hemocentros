@@ -29,7 +29,7 @@
             <label class="control-label" translate="timeLocationApp.hemocentro.email" for="field_email">Email</label>
             <input type="text" class="form-control" name="email" id="field_email"
                     ng-model="vm.hemocentro.email"
-                    required ng-pattern="/^[a-zA-Z0-9]*$/" />
+                    required ng-pattern=="/^[_'.@A-Za-z0-9-]*$/" />
             <div ng-show="editForm.email.$invalid">
                 <p class="help-block"
                     ng-show="editForm.email.$error.required" translate="entity.validation.required">
