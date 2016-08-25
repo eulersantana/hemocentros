@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+   <changeSet author="root (generated)" id="1471888418397-1">
+      <createSequence sequenceName="hibernate_sequence"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-2">
+      <createTable tableName="endereco">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="enderecoPK"/>
+         </column>
+         <column name="cep" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="complemento" type="VARCHAR(255)"/>
+         <column name="created_at" type="timestamp">
+            <constraints nullable="false"/>
+         </column>
+         <column name="latitude" type="FLOAT8"/>
+         <column name="longitude" type="FLOAT8"/>
+         <column name="numero" type="INT"/>
+         <column name="rua" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="hemocentro_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-3">
+      <createTable tableName="funcionamento">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="funcionamentoPK"/>
+         </column>
+         <column name="created_at" type="timestamp"/>
+         <column name="data_fim" type="timestamp">
+            <constraints nullable="false"/>
+         </column>
+         <column name="data_inicio" type="timestamp">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-4">
+      <createTable tableName="hemocentro">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="hemocentroPK"/>
+         </column>
+         <column name="created_at" type="date">
+            <constraints nullable="false"/>
+         </column>
+         <column name="email" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="movel" type="BOOLEAN">
+            <constraints nullable="false"/>
+         </column>
+         <column name="nome" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="status" type="BOOLEAN">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-5">
+      <createTable tableName="jhi_authority">
+         <column name="name" type="VARCHAR(50)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-6">
+      <createTable tableName="jhi_persistent_audit_event">
+         <column autoIncrement="true" name="event_id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+         </column>
+         <column name="event_date" type="timestamp"/>
+         <column name="event_type" type="VARCHAR(255)"/>
+         <column name="principal" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-7">
+      <createTable tableName="jhi_persistent_audit_evt_data">
+         <column name="event_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="value" type="VARCHAR(255)"/>
+         <column name="name" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-8">
+      <createTable tableName="jhi_persistent_token">
+         <column name="series" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="ip_address" type="VARCHAR(39)"/>
+         <column name="token_date" type="date"/>
+         <column name="token_value" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="user_agent" type="VARCHAR(255)"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-9">
+      <createTable tableName="jhi_social_user_connection">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="jhi_social_user_connectionPK"/>
+         </column>
+         <column name="access_token" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="display_name" type="VARCHAR(255)"/>
+         <column name="expire_time" type="BIGINT"/>
+         <column name="image_url" type="VARCHAR(255)"/>
+         <column name="profile_url" type="VARCHAR(255)"/>
+         <column name="provider_id" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="provider_user_id" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="rank" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="refresh_token" type="VARCHAR(255)"/>
+         <column name="secret" type="VARCHAR(255)"/>
+         <column name="user_id" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-10">
+      <createTable tableName="jhi_user">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+         </column>
+         <column name="created_by" type="VARCHAR(50)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="created_date" type="timestamp">
+            <constraints nullable="false"/>
+         </column>
+         <column name="last_modified_by" type="VARCHAR(50)"/>
+         <column name="last_modified_date" type="timestamp"/>
+         <column name="activated" type="BOOLEAN">
+            <constraints nullable="false"/>
+         </column>
+         <column name="activation_key" type="VARCHAR(20)"/>
+         <column name="email" type="VARCHAR(100)"/>
+         <column name="first_name" type="VARCHAR(50)"/>
+         <column name="lang_key" type="VARCHAR(5)"/>
+         <column name="last_name" type="VARCHAR(50)"/>
+         <column name="login" type="VARCHAR(100)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="password_hash" type="VARCHAR(60)"/>
+         <column name="reset_date" type="timestamp"/>
+         <column name="reset_key" type="VARCHAR(20)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-11">
+      <createTable tableName="jhi_user_authority">
+         <column name="user_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="authority_name" type="VARCHAR(50)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-12">
+      <createTable tableName="local">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="localPK"/>
+         </column>
+         <column name="cidade" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="estado" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="pais" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-13">
+      <createTable tableName="telefone">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="telefonePK"/>
+         </column>
+         <column name="ddd" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="ddi" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="fixo" type="BOOLEAN">
+            <constraints nullable="false"/>
+         </column>
+         <column name="numero" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="hemocentro_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-14">
+      <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-15">
+      <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-16">
+      <addPrimaryKey columnNames="name"
+                     constraintName="jhi_authorityPK"
+                     tableName="jhi_authority"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-17">
+      <addPrimaryKey columnNames="series"
+                     constraintName="jhi_persistent_tokenPK"
+                     tableName="jhi_persistent_token"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-18">
+      <addUniqueConstraint columnNames="hemocentro_id"
+                           constraintName="UC_ENDERECOHEMOCENTRO_ID_COL"
+                           tableName="endereco"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-19">
+      <addUniqueConstraint columnNames="email"
+                           constraintName="UC_JHI_USEREMAIL_COL"
+                           tableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-20">
+      <addUniqueConstraint columnNames="login"
+                           constraintName="UC_JHI_USERLOGIN_COL"
+                           tableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-21">
+      <addForeignKeyConstraint baseColumnNames="hemocentro_id"
+                               baseTableName="telefone"
+                               constraintName="FK_9jqlnbj0if1p0p2wb4irnnf1w"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="hemocentro"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-22">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="jhi_persistent_token"
+                               constraintName="FK_c2yetr6vr7nrqhjvi1rl24b3l"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-23">
+      <addForeignKeyConstraint baseColumnNames="event_id"
+                               baseTableName="jhi_persistent_audit_evt_data"
+                               constraintName="FK_evb970jo5bi8aon8s65c0lyyn"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="event_id"
+                               referencedTableName="jhi_persistent_audit_event"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-24">
+      <addForeignKeyConstraint baseColumnNames="authority_name"
+                               baseTableName="jhi_user_authority"
+                               constraintName="FK_ik5r332jlvpolfr7e5n7oi42l"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="name"
+                               referencedTableName="jhi_authority"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-25">
+      <addForeignKeyConstraint baseColumnNames="hemocentro_id"
+                               baseTableName="endereco"
+                               constraintName="FK_ju7jy3j95av1nr95716ep5e9t"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="hemocentro"/>
+   </changeSet>
+   <changeSet author="root (generated)" id="1471888418397-26">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="jhi_user_authority"
+                               constraintName="FK_pg0oaw6mr9pt3ibeihdc1jwof"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+</databaseChangeLog>

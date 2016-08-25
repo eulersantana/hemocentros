@@ -669,10 +669,10 @@
                     <changeLogFile>src/main/resources/config/liquibase/master.xml</changeLogFile>
                     <diffChangeLogFile>src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                     <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://localhost:5432/timeLocation</url>
-                    <defaultSchemaName></defaultSchemaName>
-                    <username>timeLocation</username>
-                    <password></password>
+                    <url>jdbc:postgresql://localhost:5432/timelocation</url>
+                    <defaultSchemaName>timelocation</defaultSchemaName>
+                    <username>postgres</username>
+                    <password>@!Rakfly12</password>
                     <referenceUrl>hibernate:spring:com.eulersantana.timelocation.domain?dialect=org.hibernate.dialect.PostgreSQL82Dialect&amp;hibernate.ejb.naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>

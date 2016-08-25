@@ -5,7 +5,7 @@
         .module('timeLocationApp')
         .config(bootstrapMaterialDesignConfig);
 
-    compileServiceConfig.$inject = [];
+    // compileServiceConfig.$inject = [];
 
     function bootstrapMaterialDesignConfig() {
         // $.material.init();

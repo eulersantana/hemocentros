@@ -1,0 +1,106 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myEnderecoLabel" translate="timeLocationApp.endereco.home.createOrEditLabel">Create or edit a Endereco</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.endereco.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.endereco.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.endereco.rua" for="field_rua">Rua</label>
+            <input type="text" class="form-control" name="rua" id="field_rua"
+                    ng-model="vm.endereco.rua"
+                    required />
+            <div ng-show="editForm.rua.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.rua.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.endereco.numero" for="field_numero">Numero</label>
+            <input type="number" class="form-control" name="numero" id="field_numero"
+                    ng-model="vm.endereco.numero"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.endereco.cep" for="field_cep">Cep</label>
+            <input type="text" class="form-control" name="cep" id="field_cep"
+                    ng-model="vm.endereco.cep"
+                    required />
+            <div ng-show="editForm.cep.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cep.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.endereco.complemento" for="field_complemento">Complemento</label>
+            <input type="text" class="form-control" name="complemento" id="field_complemento"
+                    ng-model="vm.endereco.complemento"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.endereco.longitude" for="field_longitude">Longitude</label>
+            <input type="number" class="form-control" name="longitude" id="field_longitude"
+                    ng-model="vm.endereco.longitude"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.endereco.latitude" for="field_latitude">Latitude</label>
+            <input type="number" class="form-control" name="latitude" id="field_latitude"
+                    ng-model="vm.endereco.latitude"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="timeLocationApp.endereco.createdAt" for="field_createdAt">Created At</label>
+                <div class="input-group">
+                    <input id="field_createdAt" type="text" class="form-control" name="createdAt" datetime-picker="{{dateformat}}" ng-model="vm.endereco.createdAt" is-open="vm.datePickerOpenStatus.createdAt"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdAt')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.createdAt.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.createdAt.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.createdAt.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="timeLocationApp.endereco.hemocentro" for="field_hemocentro">Hemocentro</label>
+            <select class="form-control" id="field_hemocentro" name="hemocentro" ng-model="vm.endereco.hemocentro" ng-options="hemocentro as hemocentro.id for hemocentro in vm.hemocentros | orderBy:'id' track by hemocentro.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.hemocentro.$invalid">
+            <p class="help-block"
+                ng-show="editForm.hemocentro.$error.required" translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
