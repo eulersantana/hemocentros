@@ -1,8 +1,8 @@
 {
     "social": {
-        "btnLabel": "Sign in with {{ label }}",
+        "btnLabel": "{{ label }}",
         "register": {
-            "title": "Register with {{ label }}",
+            "title": " {{ label }}",
             "errorTitle": "Register with an external account",
             "messages": {
                 "success": "<strong>Registration saved!</strong> Please check your email for confirmation.",

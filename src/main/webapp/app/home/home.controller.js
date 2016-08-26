@@ -5,9 +5,9 @@
         .module('timeLocationApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'NgMap'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'NgMap',  'Hemocentro', 'Endereco'];
 
-    function HomeController ($scope, Principal, LoginService, $state, NgMap) {
+    function HomeController ($scope, Principal, LoginService, $state, NgMap, Hemocentro,Endereco) {
         var vm = this;
 
         vm.account = null;
@@ -15,6 +15,7 @@
         vm.login = LoginService.open;
         vm.register = register;
         vm.callbackFunc = callbackFunc;
+        vm.pontos = [];
 
         $scope.$on('authenticationSuccess', function() {
             getAccount();
@@ -25,6 +26,7 @@
         });
 
         getAccount();
+        // getHemocnetros();
 
         function getAccount() {
             Principal.identity().then(function(account) {
@@ -32,13 +34,25 @@
                 vm.isAuthenticated = Principal.isAuthenticated;
             });
         }
+
+
         function register () {
             $state.go('register');
         }
 
+        function getHemocnetros () {
+
+        }
+
         function callbackFunc(param){
-          console.log('You are at '+vm.map.getCenter());
-          vm.positionMy = vm.map.getCenter();
+          vm.pontos.push(vm.map.getCenter());
+          Endereco.query(function(res){
+            res.$promise.then(function(data){
+              data.forEach(function(pos){
+                vm.pontos.push([pos.longitude,pos.latitude]);
+              });
+            });
+          });
         }
     }
 })();

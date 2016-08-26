@@ -5,9 +5,9 @@
         .module('timeLocationApp')
         .controller('EnderecoDialogController', EnderecoDialogController);
 
-    EnderecoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Endereco', 'Hemocentro'];
+    EnderecoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Endereco', 'Hemocentro', 'NgMap', 'GeoCoder'];
 
-    function EnderecoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Endereco, Hemocentro) {
+    function EnderecoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Endereco, Hemocentro, NgMap, GeoCoder) {
         var vm = this;
 
         vm.endereco = entity;
@@ -15,6 +15,7 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
+        vm.getLatitudeLongitude = getLatitudeLongitude;
         vm.hemocentros = Hemocentro.query({filter: 'endereco-is-null'});
         $q.all([vm.endereco.$promise, vm.hemocentros.$promise]).then(function() {
             if (!vm.endereco.hemocentro || !vm.endereco.hemocentro.id) {
@@ -29,6 +30,10 @@
             angular.element('.form-group:eq(1)>input').focus();
         });
 
+        NgMap.getMap().then(function(map) {
+          vm.map = map;
+        });
+
         function clear () {
             $uibModalInstance.dismiss('cancel');
         }
@@ -40,6 +45,23 @@
             } else {
                 Endereco.save(vm.endereco, onSaveSuccess, onSaveError);
             }
+        }
+
+        function getLatitudeLongitude () {
+          var address = {address: vm.endereco.rua};
+          GeoCoder.geocode(address).then(
+            function(results) {
+              console.log(results);
+              vm.endereco.latitude  = results[0].geometry.location.lng();
+              vm.endereco.longitude = results[0].geometry.location.lat();
+              vm.poss = '['+vm.endereco.longitude+','+vm.endereco.latitude+']';
+
+              console.log(vm.poss);
+            },
+            function(error) {
+            console.log(error);
+            }
+          );
         }
 
         function onSaveSuccess (result) {
