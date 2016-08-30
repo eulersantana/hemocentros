@@ -54,7 +54,7 @@
                 "register": "Não possui uma conta ainda? <a class=\"alert-link\" href=\"\" ng-click=\"vm.register()\">Crie uma nova conta</a>"
             },
             "error": {
-                "dontmatch" : "A senha e sua confirmação devem ser iguais!"
+                "dontmatch": "A senha e sua confirmação devem ser iguais!"
             },
             "validate": {
                 "newpassword": {
@@ -77,10 +77,10 @@
             }
         },
         "field": {
-            "id" : "Código"
+            "id": "Código"
         },
         "ribbon": {
-            "dev":"Development"
+            "dev": "Development"
         }
     },
     "entity": {
@@ -124,5 +124,8 @@
         "emailexists": "Este email já está cadastrado!",
         "idexists": "Novo(a) {{entityName}} não pode ter uma ID"
     },
-    "footer": "Este é o seu rodapé"
+    "footer": "Este é o seu rodapé",
+    "bootswatch": {
+        "themeSelector": "Theme"
+    }
 }
