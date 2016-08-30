@@ -51,6 +51,7 @@
                 "google-maps": "^3.2.1"
             }
         },
+        
         "angular-cache-buster": {
             "dependencies": {
                 "angular": "1.5.5"
