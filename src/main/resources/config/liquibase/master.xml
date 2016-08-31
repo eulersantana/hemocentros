@@ -14,8 +14,12 @@
     <include file="classpath:config/liquibase/changelog/20160819125232_added_entity_constraints_Telefone.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160819170909_added_entity_constraints_Funcionamento.xml" relativeToChangelogFile="false"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <include file="classpath:config/liquibase/changelog/20160822164030_added_entity_constraints_Endereco.xml" relativeToChangelogFile="false"/>
 =======
 >>>>>>> 098af17ff0ba78740854cdb9f48102f7ed8895d1
+=======
+    <include file="classpath:config/liquibase/changelog/20160822164030_added_entity_constraints_Endereco.xml" relativeToChangelogFile="false"/>
+>>>>>>> origin/dev
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

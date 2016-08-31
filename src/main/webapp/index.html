@@ -24,13 +24,13 @@
     <![endif]-->
     <!-- <page-ribbon></page-ribbon> -->
     <div ui-view="navbar" ng-cloak></div>
-    <div class="container">
-        <div class="well" ui-view="content">
+    <div class="container-fluid">
+        <div class="well" ui-view="content" ng-cloak>
             <!-- Angular views -->
         </div>
 
         <div class="footer" ng-cloak>
-            <p translate="footer">This is your footer</p>
+          <p translate="footer" class="pull-left">This is your footer</p>
         </div>
     </div>
 
@@ -176,7 +176,6 @@
     <script src="app/blocks/config/localstorage.config.js"></script>
     <script src="app/blocks/config/http.config.js"></script>
     <script src="app/blocks/config/compile.config.js"></script>
-    <script src="app/blocks/config/bootstrap-material.config.js"></script>
     <script src="app/blocks/config/alert.config.js"></script>
     <script src="app/app.state.js"></script>
     <script src="app/app.constants.js"></script>
