@@ -33,8 +33,6 @@
         vm.reverse = true;
         vm.show = show;
 
-        vm.getHemocnetro = getHemocnetro;
-
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
@@ -61,11 +59,7 @@
         function show (e, hemocentro) {
           console.log(hemocentro);
 
-        function getHemocnetro (e, hemocentro) {
-          console.log(hemocentro);
         }
-
-
 
         function callbackFunc(){
           NavigatorGeolocation.getCurrentPosition()
@@ -107,7 +101,5 @@
 
 
         }
-
-
-    }
+}
 })();
