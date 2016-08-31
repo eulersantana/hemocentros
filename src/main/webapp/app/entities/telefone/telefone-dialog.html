@@ -76,9 +76,15 @@
 
         <div class="form-group">
             <label translate="timeLocationApp.telefone.hemocentro" for="field_hemocentro">Hemocentro</label>
-            <select class="form-control" id="field_hemocentro" name="hemocentro" ng-model="vm.telefone.hemocentro" ng-options="hemocentro as hemocentro.id for hemocentro in vm.hemocentros track by hemocentro.id">
+            <select class="form-control" id="field_hemocentro" name="hemocentro" ng-model="vm.telefone.hemocentro" ng-options="hemocentro as hemocentro.id for hemocentro in vm.hemocentros track by hemocentro.id" required>
                 <option value=""></option>
             </select>
+        </div>
+        <div ng-show="editForm.hemocentro.$invalid">
+            <p class="help-block"
+                ng-show="editForm.hemocentro.$error.required" translate="entity.validation.required">
+                This field is required.
+            </p>
         </div>
     </div>
     <div class="modal-footer">

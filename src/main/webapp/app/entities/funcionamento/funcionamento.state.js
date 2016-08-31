@@ -104,9 +104,9 @@
                     resolve: {
                         entity: function () {
                             return {
-                                data_inicio: null,
-                                data_fim: null,
-                                createdAt: null,
+                                dia: null,
+                                hora_inicio: null,
+                                hora_fim: null,
                                 id: null
                             };
                         }

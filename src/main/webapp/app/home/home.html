@@ -3,24 +3,79 @@
         <!-- <div class="col-md-4">
             <span class="hipster img-responsive img-rounded"></span>
         </div> -->
-        <div class="col-md-12 map-start">
+        <div class="col-md-12 ">
             <!-- <h1 ></h1> -->
 
             <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true" translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
+                <!-- <div class="alert alert-success" ng-switch-when="true" translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
                     You are logged in as user "{{vm.account.login}}".
-                </div>
+                    <!-- icon="{
+                      url:'{{(p.hemocentro.movel)? 'content/images/icons/bus.svg' : 'content/images/icons/fixo.svg'}}',
+                      scaledSize:[50,50]
+                    }"
+                </div> -->
                 <div map-lazy-load="https://maps.google.com/maps/api/js">
-                  <ng-map center='current-position'
-                    geo-fallback-center="[40.74, -74.18]"
-                    zoom="14"
-                    geo-callback="vm.callbackFunc('you')"
+                  <ng-map  center='current-position'
+                    geo-fallback-center="[{{vm.lat}},{{vm.lng}}]"
+                    zoom="15"
+                    geo-callback="vm.callbackFunc()"
+                    ng-cloak
                     >
-                    <custom-marker position="{{vm.positionMy}}" title="Hello World!">
+                    <!-- Posicao dos hospitais -->
+                    <marker ng-repeat=" p in vm.saude"
+                      optimized="true"
+                      animation="DROP"
+                      position="{{[p.lat, p.long]}}"
+                      draggable="false"
+                      icon="{
+                        url:'{{(p.esferaAdministrativa === 'Privada')?'content/images/icons/hospital_p.png':'content/images/icons/hospital.png'}}',
+                        scaledSize:[50,50]
+                      }"
+                      on-click="vm.show(p)"
+                    >
+                      <!-- <div >
+                        {{p.nomeFantasia}}
+                      </div> -->
+
+                    </marker>
+
+                    <!-- Posicao dos hemocentros -->
+                    <marker ng-repeat=" p in vm.pontos"
+                      optimized="false"
+                      animation="DROP"
+                      position="{{[p.latitude, p.longitude]}}"
+                      draggable="false"
+                      icon="{
+                        url:'{{(p.hemocentro.movel)? 'content/images/icons/bus.svg' : 'content/images/icons/fixo.svg'}}',
+                        scaledSize:[50,50]
+                      }"
+                    >
+                      <!-- <div ng-if="p.movel">  on-click="vm.getHemocnetro(p)"
+                        <img src="content/images/icons/bus.svg" alt="" />
+                      </div> -->
+
+                    </marker>
+                    <!-- Minha posicao -->
+                    <marker
+                      optimized="false"
+                      animation="BOUNCE"
+                      position="[{{vm.lat}}, {{vm.lng}}]"
+                      draggable="false"
+                      icon="{
+                        url:'content/images/icons/me.svg',
+                        scaledSize:[30,30]
+                      }"
+                    >
+                    </marker>
+                    <!-- <custom-marker position="{{vm.positionMy}}" title="Hello World!">
                        <div class="my1"><div> VOCÊ</div> </div>
-                    </custom-marker>
+                    </custom-marker> -->
                   </ng-map>
                 </div>
+                <pre>
+                  {{vm.saude.length}}
+                  {{vm.pontos}}
+                </pre>
             </div>
         </div>
     </div>

@@ -16,9 +16,8 @@
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
-                        data.data_inicio = DateUtils.convertDateTimeFromServer(data.data_inicio);
-                        data.data_fim = DateUtils.convertDateTimeFromServer(data.data_fim);
-                        data.createdAt = DateUtils.convertDateTimeFromServer(data.createdAt);
+                        data.hora_inicio = DateUtils.convertDateTimeFromServer(data.hora_inicio);
+                        data.hora_fim = DateUtils.convertDateTimeFromServer(data.hora_fim);
                     }
                     return data;
                 }
