@@ -3,7 +3,7 @@
         <!-- <div class="col-md-4">
             <span class="hipster img-responsive img-rounded"></span>
         </div> -->
-        <div class="col-md-12 ">
+        <div class="col-xs-6 col-md-8 ">
             <!-- <h1 ></h1> -->
 
             <div ng-switch="vm.isAuthenticated()">
@@ -11,7 +11,7 @@
                 <div map-lazy-load="https://maps.google.com/maps/api/js">
                   <ng-map  center='current-position'
                     geo-fallback-center="[{{vm.lat}},{{vm.lng}}]"
-                    zoom="15"
+                    zoom="17"
                     geo-callback="vm.callbackFunc()"
                     ng-cloak
                     >
@@ -63,13 +63,16 @@
                     >
                 </div>
 
-                <pre>
-
-                  {{vm.saude.length}}
-
-                  {{vm.pontos}}
-                </pre>
             </div>
+            <button type="button" class="btn btn-default" ng-click="vm.isCollapsedHorizontal = !vm.isCollapsedHorizontal">Toggle collapse Horizontally</button>
+            <hr>
+
+        </div>
+        <div class="col-xs-6 col-md-4" uib-collapse="vm.isCollapsedHorizontal" horizontal>
+          <div class="page-header">
+            <h3>{{vm.centroSaude.nomeFantasia}} </br><small>{{vm.centroSaude.categoriaUnidade}}</small> <span class="badge">{{vm.centroSaude.esferaAdministrativa}}</span></h3>
+          </div>
         </div>
     </div>
+
 </div>

@@ -8,73 +8,78 @@
     </div>
     <div class="modal-body row">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group col-md-12" ng-show="vm.endereco.id">
-            <label for="id" translate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.endereco.id" readonly />
-        </div>
-        <div class="form-group col-md-12">
-              <label class="control-label" translate="timeLocationApp.endereco.rua" for="field_rua">Rua</label>
-              <input type="text" class="form-control" name="rua" id="field_rua"
-                      ng-model="vm.endereco.rua" ng-blur="vm.getLatitudeLongitude()"
+        <div class="col-md-6">
+          <div class="form-group col-md-12" ng-show="vm.endereco.id">
+              <label for="id" translate="global.field.id">ID</label>
+              <input type="text" class="form-control" id="id" name="id"
+                      ng-model="vm.endereco.id" readonly />
+          </div>
+          <div class="form-group col-md-12">
+                <label class="control-label" translate="timeLocationApp.endereco.rua" for="field_rua">Rua</label>
+                <input type="text" class="form-control" name="rua" id="field_rua"
+                        ng-model="vm.endereco.rua" ng-blur="vm.getLatitudeLongitude()"
+                        required />
+                <div ng-show="editForm.rua.$invalid">
+                    <p class="help-block"
+                        ng-show="editForm.rua.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+          </div>
+          <div class="form-group col-md-6">
+              <label class="control-label" translate="timeLocationApp.endereco.numero" for="field_numero">Numero</label>
+              <input type="number" class="form-control" name="numero" id="field_numero"
+                      ng-model="vm.endereco.numero"
+                       />
+          </div>
+          <div class="form-group col-md-6">
+              <label class="control-label" translate="timeLocationApp.endereco.cep" for="field_cep">Cep</label>
+              <input type="text" class="form-control" name="cep" id="field_cep"
+                      ng-model="vm.endereco.cep"
                       required />
-              <div ng-show="editForm.rua.$invalid">
+              <div ng-show="editForm.cep.$invalid">
                   <p class="help-block"
-                      ng-show="editForm.rua.$error.required" translate="entity.validation.required">
+                      ng-show="editForm.cep.$error.required" translate="entity.validation.required">
                       This field is required.
                   </p>
               </div>
+          </div>
+          <div class="form-group col-md-12">
+              <label class="control-label" translate="timeLocationApp.endereco.complemento" for="field_complemento">Complemento</label>
+              <input type="text" class="form-control" name="complemento" id="field_complemento"
+                      ng-model="vm.endereco.complemento"
+                       />
+          </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-6">
           <div map-lazy-load="https://maps.google.com/maps/api/js">
-            <ng-map center='current-position'
-              geo-fallback-center="[40.74, -74.18]"
+            <ng-map class="edit-endreco" center='[{{vm.endereco.longitude}}, {{vm.endereco.latitude}}]'
               zoom="14"
-              geo-callback="vm.callbackFunc('you')"
               >
-              <custom-marker position="{{vm.poss}}" title="Hello World!">
-                 <div class="my1"><div> Local</div> </div>
-              </custom-marker>
+              <marker
+                position="[{{vm.endereco.longitude}}, {{vm.endereco.latitude}}]"
+                title="{{vm.endereco.rua}}"
+                animation="BOUNCE">
+                 <!-- <div class="my1"><div>{{vm.endereco.rua}}</div> </div> -->
+              </marker>
             </ng-map>
           </div>
         </div>
-        <div class="form-group col-md-4">
-            <label class="control-label" translate="timeLocationApp.endereco.numero" for="field_numero">Numero</label>
-            <input type="number" class="form-control" name="numero" id="field_numero"
-                    ng-model="vm.endereco.numero"
-                     />
-        </div>
-        <div class="form-group col-md-4">
-            <label class="control-label" translate="timeLocationApp.endereco.cep" for="field_cep">Cep</label>
-            <input type="text" class="form-control" name="cep" id="field_cep"
-                    ng-model="vm.endereco.cep"
-                    required />
-            <div ng-show="editForm.cep.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.cep.$error.required" translate="entity.validation.required">
-                    This field is required.
-                </p>
-            </div>
-        </div>
-        <div class="form-group col-md-4">
-            <label class="control-label" translate="timeLocationApp.endereco.complemento" for="field_complemento">Complemento</label>
-            <input type="text" class="form-control" name="complemento" id="field_complemento"
-                    ng-model="vm.endereco.complemento"
-                     />
-        </div>
-        <div class="form-group col-md-6">
+
+
+        <div class="form-group col-md-6" ng-hide="true">
             <label class="control-label" translate="timeLocationApp.endereco.longitude" for="field_longitude">Longitude</label>
             <input type="number" class="form-control" name="longitude" id="field_longitude"
-                    ng-model="vm.endereco.longitude" disabled="disabled"
+                    ng-model="vm.endereco.longitude"
                      />
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6" ng-hide="true">
             <label class="control-label" translate="timeLocationApp.endereco.latitude" for="field_latitude">Latitude</label>
             <input type="number" class="form-control" name="latitude" id="field_latitude"
-                    ng-model="vm.endereco.latitude" disabled="disabled"
+                    ng-model="vm.endereco.latitude"
                      />
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-12" ng-hide="true">
             <label class="control-label" translate="timeLocationApp.endereco.createdAt" for="field_createdAt">Created At</label>
                 <div class="input-group">
                     <input id="field_createdAt" type="text" class="form-control" name="createdAt" datetime-picker="{{dateformat}}" ng-model="vm.endereco.createdAt" is-open="vm.datePickerOpenStatus.createdAt"
@@ -108,6 +113,7 @@
             </p>
         </div>
     </div>
+
     <div class="modal-footer ">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>

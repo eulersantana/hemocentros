@@ -32,6 +32,8 @@
         vm.predicate = 'id';
         vm.reverse = true;
         vm.show = show;
+        vm.isCollapsedHorizontal = false;
+
 
         $scope.$on('authenticationSuccess', function() {
             getAccount();
@@ -56,8 +58,9 @@
         }
 
 
-        function show (e, hemocentro) {
-          console.log(hemocentro);
+        function show (e, hospital) {
+          vm.centroSaude = hospital;
+          console.log(hospital);
 
         }
 
@@ -66,7 +69,7 @@
          .then(function(position) {
            vm.lat = position.coords.latitude, vm.lng = position.coords.longitude;
 
-           SaudeService.getSaudeMyLocation(vm.lat,vm.lng, 100, 500).then(function(data){
+           SaudeService.getSaudeMyLocation(vm.lat,vm.lng, 100, 1000).then(function(data){
                vm.saude = data;
            });
          });
