@@ -66,7 +66,7 @@
          .then(function(position) {
            vm.lat = position.coords.latitude, vm.lng = position.coords.longitude;
 
-           SaudeService.getSaudeMyLocation(vm.lat,vm.lng, 100, 10000).then(function(data){
+           SaudeService.getSaudeMyLocation(vm.lat,vm.lng, 100, 500).then(function(data){
                vm.saude = data;
            });
          });

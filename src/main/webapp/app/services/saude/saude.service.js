@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  
+
   angular
       .module('timeLocationApp')
       .factory('SaudeService', SaudeService);
@@ -8,7 +8,8 @@
       SaudeService.$inject = ['$q','$http'];
 
       function SaudeService($q, $http) {
-        var baseUrl = 'http://mobile-aceite.tcu.gov.br/mapa-da-saude/';
+        // var baseUrl = 'http://mobile-aceite.tcu.gov.br/mapa-da-saude/';
+        var baseUrl = 'http://mobile-aceite.tcu.gov.br:80/nossaEscolaRS/';
 
         var dataPromise;
 
@@ -20,7 +21,7 @@
         return service;
 
         function getSaudeMyLocation(lat, long, raio, quantidade) {
-            var search = '/rest/estabelecimentos/latitude/'+lat+'/longitude/'+long+'/raio/'+raio;
+            var search = '/rest/escolas/latitude/'+lat+'/longitude/'+long+'/raio/'+raio;
             var config = {
               'pagina':3,
               'quantidade':quantidade
@@ -35,7 +36,7 @@
             return dataPromise;
         }
         function getSaudeClinicas(quantidade) {
-            var search = '/rest/estabelecimentos';
+            var search = '/rest/escolas';
 
             if (angular.isUndefined(dataPromise)) {
               var config = {
