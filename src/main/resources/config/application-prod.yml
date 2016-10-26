@@ -18,8 +18,8 @@ spring:
         livereload:
             enabled: false
     datasource:
-        url: jdbc:postgresql://localhost:5432/timelocation
-        name: timelocation
+        url: jdbc:postgresql://localhost:5432/hemo_prod
+        name: hemo_prod
         username: postgres
         password: '@!Rakfly12'
     jpa:

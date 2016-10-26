@@ -880,7 +880,7 @@
                                     <goal>bower</goal>
                                 </goals>
                                 <configuration>
-                                    <arguments>install --no-color</arguments>
+                                    <arguments>install --allow-root</arguments>
                                 </configuration>
                             </execution>
                             <execution>
